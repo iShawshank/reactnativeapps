@@ -1,0 +1,38 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "lint": "eslint app/",
+    "lint:fix": "eslint app/ --fix"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "6.2.0",
+    "color": "3.0.0",
+    "expo": "~36.0.0",
+    "expo-font": "~8.0.0",
+    "hoist-non-react-statics": "3.0.1",
+    "moment": "2.18.1",
+    "prop-types": "^15.7.2",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-dropdownalert": "3.1.2",
+    "react-native-extended-stylesheet": "0.8.0",
+    "react-native-web": "~0.11.7",
+    "react-navigation": "2.5.5",
+    "react-redux": "5.0.4",
+    "redux": "4.0.0",
+    "redux-logger": "3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3"
+  },
+  "private": true
+}
