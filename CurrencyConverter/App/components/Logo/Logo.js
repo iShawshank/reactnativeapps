@@ -68,7 +68,11 @@ class Logo extends Component {
     ];
 
     // Dynamically set the logo size of the animated images
-    const imageStyle = [styles.logo, { width: this.imageWidth }];
+    const imageStyle = [
+      styles.logo,
+      { width: this.imageWidth },
+      this.props.tintColor ? { tintColor: this.props.tintColor } : null,
+    ];
 
     return (
       <View style={styles.container}>

@@ -12,11 +12,17 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
   handlePressBaseCurrency() {
-    this.props.navigation.navigate('CurrencyList', { title: 'Base Currency' })
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Base Currency',
+      type: 'base'
+    })
   }
 
   handlePressQuoteCurrency() {
-    this.props.navigation.navigate('CurrencyList', { title: 'Quote Currency' })
+    this.props.navigation.navigate('CurrencyList', {
+      title: 'Quote Currency',
+      type: 'quote',
+    })
   }
 
   handleTextChange = (text) => {
@@ -41,23 +47,25 @@ class Home extends Component {
       quotePrice = '...'
     }
     return (
-      <Container>
+      <Container backgroundColor={this.props.primaryColor}>
         <StatusBar barStyle='light-content' />
         <Header onPress={() => this.handleOptionsPress()} />
         <KeyboardAvoidingView behavior='padding'>
-          <Logo />
+          <Logo tintColor={this.props.primaryColor} />
           <InputWithButton
             buttonText={this.props.baseCurrency}
             onPress={() => this.handlePressBaseCurrency()}
             defaultValue={this.props.amount.toString()}
             keyboardType="numeric"
             onChangeText={this.handleTextChange}
+            textColor={this.props.primaryColor}
           />
           <InputWithButton
             buttonText={this.props.quoteCurrency}
             onPress={() => this.handlePressQuoteCurrency()}
             editable={false}
             value={quotePrice}
+            textColor={this.props.primaryColor}
           />
           <LastConverted
             base={this.props.baseCurrency}
@@ -88,6 +96,7 @@ const mapStateToProps = (state) => {
     conversionRate: rates[quoteCurrency] || 0,
     isFetching: conversionSelector.isFetching,
     lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
+    primaryColor: state.themes.primaryColor,
   }
 }
 

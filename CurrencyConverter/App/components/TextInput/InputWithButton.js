@@ -27,6 +27,7 @@ export default class InputWithButton extends Component {
       containerStyles.push(styles.containerDisabled)
     }
 
+    const textStyles = [styles.buttonText, { color: this.props.textColor }]
     return (
       <View style={containerStyles}>
         <TouchableHighlight
@@ -34,7 +35,7 @@ export default class InputWithButton extends Component {
           style={styles.buttonContainer}
           onPress={this.props.onPress}
         >
-          <Text style={styles.buttonText}>{this.props.buttonText}</Text>
+          <Text style={textStyles}>{this.props.buttonText}</Text>
         </TouchableHighlight>
         <View style={styles.border} />
         <TextInput
