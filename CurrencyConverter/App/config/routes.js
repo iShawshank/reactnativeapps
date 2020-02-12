@@ -1,4 +1,5 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createAppContainer } from 'react-navigation'
 
 import CurrencyList from '../screens/CurrencyList'
 import Home from '../screens/Home'
@@ -33,13 +34,15 @@ const CurrencyListStack = createStackNavigator({
     screen: CurrencyList,
     navigationOptions: ({ navigation }) => ({
       headerTitle: navigation.state.params.title,
+      cardStyle: { paddingTop: StatusBar.currentHeight },
     }),
   }
 }, {
   headerMode: 'screen'
 })
 
-export default createStackNavigator({
+
+const MainNavigator = createStackNavigator({
   Home: {
     screen: HomeStack
   },
@@ -49,7 +52,10 @@ export default createStackNavigator({
 },
   {
     mode: 'modal',
-    cardStyle: { paddingTop: StatusBar.currentHeight },
     headerMode: 'none'
   }
 )
+
+const Navigator = createAppContainer(MainNavigator);
+
+export default Navigator;

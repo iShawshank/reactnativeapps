@@ -1,6 +1,3 @@
-// 1 for swap
-// 2. change baseCurrency happens
-// 3. Upon initial app load
 import {
   takeEvery,
   select,
