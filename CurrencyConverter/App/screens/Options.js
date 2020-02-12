@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView, Image, StatusBar, Linking } from 'react-native';
 import { ListItem, Separator } from '../components/List';
 import PropTypes from 'prop-types'
-import { connectAlert } from '../components/Alert'
 
 const ICON_COLOR = '#868686';
 const ICON_SIZE = 23;
@@ -20,7 +19,7 @@ class Options extends Component {
   }
 
   handleSitePress() {
-    Linking.openURL('htsstp://fixer.io').catch(() => this.props.alertWithType('error', 'Sorry!', 'Fixer.io cant be opened right now.'))
+    Linking.openURL('http://fixer.io').catch(() => alert('Error: Fixer.io cant be opened right now.'))
   }
 
   render() {
@@ -51,4 +50,4 @@ class Options extends Component {
   }
 }
 
-export default connectAlert(Options);
+export default Options;
