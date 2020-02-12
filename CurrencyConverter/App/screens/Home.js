@@ -6,7 +6,11 @@ import { InputWithButton } from '../components/TextInput';
 import { ClearButton } from '../components/Buttons';
 import { LastConverted } from '../components/Text';
 import { Header } from '../components/Header'
-import { swapCurrency, changeCurrencyAmount } from '../actions/currencies'
+import {
+  swapCurrency,
+  changeCurrencyAmount,
+  getInitialConversion
+} from '../actions/currencies'
 import { connect } from 'react-redux';
 
 
@@ -16,6 +20,16 @@ class Home extends Component {
       title: 'Base Currency',
       type: 'base'
     })
+  }
+
+  componentDidMount() {
+    this.props.dispatch(getInitialConversion())
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.currencyError && prevProps.currencyError != this.props.currencyError) {
+      alert('Error Occured while attempting to retrieve currency conversion rates: ' + this.props.currencyError)
+    }
   }
 
   handlePressQuoteCurrency() {
@@ -97,6 +111,7 @@ const mapStateToProps = (state) => {
     isFetching: conversionSelector.isFetching,
     lastConvertedDate: conversionSelector.date ? new Date(conversionSelector.date) : new Date(),
     primaryColor: state.themes.primaryColor,
+    currencyError: state.currencies.error,
   }
 }
 

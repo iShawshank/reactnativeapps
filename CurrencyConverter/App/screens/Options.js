@@ -20,7 +20,7 @@ class Options extends Component {
   }
 
   handleSitePress() {
-    Linking.openURL('http://fixer.io').catch(() => this.props.alertWithType('error', 'Sorry!', 'Fixer.io cant be opened right now.'))
+    Linking.openURL('htsstp://fixer.io').catch(() => this.props.alertWithType('error', 'Sorry!', 'Fixer.io cant be opened right now.'))
   }
 
   render() {
